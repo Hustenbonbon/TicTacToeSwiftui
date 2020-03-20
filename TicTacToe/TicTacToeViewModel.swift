@@ -11,35 +11,74 @@ import Combine
 
 class TicTacToeViewModel: ObservableObject {
     
+    var winStreaks = [
+        (0, 1, 2),
+        (3, 4, 5),
+        (6, 7, 8),
+        (0, 3, 6),
+        (1, 4, 7),
+        (2, 5, 8),
+        (0, 4, 8),
+        (2, 4, 6),
+    ]
+    
     var turn = 0
     
     @Published
-    var fields = [[FieldContent]](repeating: Array.init(repeating: .empty, count: 3), count: 3)
+    var fields = [[FieldContent]]()
     
     @Published
-    var eingabe = ""
+    var winnerText = ""
+    
+    var cancellable: AnyCancellable?
+    
+    init() {
+        self.cancellable = self.whoWonPublishers.assign(to: \.self.winnerText, on: self)
+        reset()
+    }
     
     func fieldClicked(column: Int, row: Int) {
-        if var field = fields[safe: column]?[safe: row],
+        if let field = fields[safe: column]?[safe: row],
             field == .empty {
-            field = turn.isMultiple(of: 2) ? FieldContent.X : FieldContent.O
+            fields[column][row] = turn.isMultiple(of: 2) ? FieldContent.X : FieldContent.O
+            turn += 1
         }
     }
     
-    var whoWonPublishers: AnyPublisher<String,Never> {
-        $eingabe.map {
-            eingabe in
-            return eingabe.lowercased()
+    func reset() {
+        fields = Array.init(repeating: Array.init(repeating: .empty, count: 3), count: 3)
+        winnerText = ""
+        turn = 0
+    }
+    
+    var whoWonPublishers: AnyPublisher<String, Never> {
+        $fields.compactMap {
+            fields in
+            
+            let flatfields = Array(fields.joined())
+            
+            for (a,b,c) in self.winStreaks {
+                if flatfields[a] == flatfields[b] && flatfields[a] == flatfields[c] {
+                    switch(flatfields[a]) {
+                        case .empty:
+                            break
+                        case .X:
+                            return "Spieler 1 hat gewonnen!"
+                        case .O:
+                            return "Spieler 2 hat gewonnen!"
+                    }
+                }
+            }
+            return nil
         }
         .eraseToAnyPublisher()
     }
-    
 }
 
 enum FieldContent: String {
-    case empty
-    case X
-    case O
+    case empty = " "
+    case X = "🔥"
+    case O = "❄️"
 }
 
 extension Array {

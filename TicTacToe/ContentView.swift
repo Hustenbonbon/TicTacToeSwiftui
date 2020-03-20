@@ -13,22 +13,24 @@ struct ContentView: View {
     @ObservedObject
     var viewModel = TicTacToeViewModel()
     
-    @State
-    var textcontent = ""
-    
     var body: some View {
         VStack(spacing: 0) {
+            
             ForEach(0...2, id: \.self) {
                 column in
                 HStack(spacing: 0) {
                     ForEach(0...2, id: \.self) {
                         row in
-                        TicTacToeField(column: column, row: row, content: .constant("O"))
+                        TicTacToeField(content: self.$viewModel.fields[column][row])
+                            .onTapGesture {
+                                self.viewModel.fieldClicked(column: column, row: row)
+                        }
                     }
                 }
             }
-            Text(viewModel.eingabe)
-            TextField("Bla", text: $viewModel.eingabe)
+            Text(viewModel.winnerText)
+                .foregroundColor(Color.red)
+                .font(.title)
         }
     }
 }
@@ -40,17 +42,11 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct TicTacToeField: View {
-    @State
-    var column: Int
-    
-    @State
-    var row: Int
-    
     @Binding
-    var content: String
+    var content: FieldContent
     
     var body: some View {
-        Text(content)
+        Text("\(content.rawValue)")
             .font(.title)
             .fontWeight(.bold)
             .frame(width: 100, height: 100, alignment: .center)
