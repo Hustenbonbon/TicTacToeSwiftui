@@ -17,10 +17,10 @@ struct ContentView: View {
     var textcontent = ""
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ForEach(0...2, id: \.self) {
                 column in
-                HStack {
+                HStack(spacing: 0) {
                     ForEach(0...2, id: \.self) {
                         row in
                         TicTacToeField(column: column, row: row, content: .constant("O"))
@@ -54,6 +54,6 @@ struct TicTacToeField: View {
             .font(.title)
             .fontWeight(.bold)
             .frame(width: 100, height: 100, alignment: .center)
-            .border(Color.black, width: 5)
+            .border(Color.black, width: 3)
     }
 }
