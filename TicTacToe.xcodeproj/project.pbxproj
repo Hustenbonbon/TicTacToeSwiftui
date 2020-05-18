@@ -15,6 +15,7 @@
 		652F19432424C33200A21556 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652F19412424C33200A21556 /* LaunchScreen.storyboard */; };
 		652F194B2424C53D00A21556 /* TicTacToeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652F194A2424C53D00A21556 /* TicTacToeViewModel.swift */; };
 		656EB4522424C958002BC1E0 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EB4512424C958002BC1E0 /* Test.swift */; };
+		6589229C2444E0C5003C6B8D /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6589229B2444E0C5003C6B8D /* MyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		652F19442424C33200A21556 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652F194A2424C53D00A21556 /* TicTacToeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToeViewModel.swift; sourceTree = "<group>"; };
 		656EB4512424C958002BC1E0 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		6589229B2444E0C5003C6B8D /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				652F194A2424C53D00A21556 /* TicTacToeViewModel.swift */,
+				6589229B2444E0C5003C6B8D /* MyView.swift */,
 				656EB4512424C958002BC1E0 /* Test.swift */,
 				652F19362424C33000A21556 /* AppDelegate.swift */,
 				652F19382424C33000A21556 /* SceneDelegate.swift */,
@@ -154,6 +157,7 @@
 			files = (
 				652F19372424C33000A21556 /* AppDelegate.swift in Sources */,
 				652F19392424C33000A21556 /* SceneDelegate.swift in Sources */,
+				6589229C2444E0C5003C6B8D /* MyView.swift in Sources */,
 				656EB4522424C958002BC1E0 /* Test.swift in Sources */,
 				652F193B2424C33000A21556 /* ContentView.swift in Sources */,
 				652F194B2424C53D00A21556 /* TicTacToeViewModel.swift in Sources */,

@@ -9,22 +9,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @ObservedObject
     var viewModel = TicTacToeViewModel()
-    
+
     var body: some View {
         VStack(spacing: 0) {
-            
-            ForEach(0...2, id: \.self) {
+            ForEach(0 ... 2, id: \.self) {
                 column in
                 HStack(spacing: 0) {
-                    ForEach(0...2, id: \.self) {
+                    ForEach(0 ... 2, id: \.self) {
                         row in
                         TicTacToeField(content: self.$viewModel.fields[column][row])
                             .onTapGesture {
                                 self.viewModel.fieldClicked(column: column, row: row)
-                        }
+                            }
                     }
                 }
             }
@@ -44,7 +42,7 @@ struct ContentView_Previews: PreviewProvider {
 struct TicTacToeField: View {
     @Binding
     var content: FieldContent
-    
+
     var body: some View {
         Text("\(content.rawValue)")
             .font(.title)

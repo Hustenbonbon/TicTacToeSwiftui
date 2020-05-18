@@ -6,11 +6,10 @@
 //  Copyright © 2020 Mayflower GmbH. All rights reserved.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 class TicTacToeViewModel: ObservableObject {
-    
     var winStreaks = [
         (0, 1, 2),
         (3, 4, 5),
@@ -21,22 +20,22 @@ class TicTacToeViewModel: ObservableObject {
         (0, 4, 8),
         (2, 4, 6),
     ]
-    
+
     var turn = 0
-    
+
     @Published
-    var fields = [[FieldContent]]()
-    
+    var fields = [[FieldContent]](repeating: Array(repeating: .empty, count: 3), count: 3)
+
     @Published
     var winnerText = ""
-    
+
     var cancellable: AnyCancellable?
-    
+
     init() {
-        self.cancellable = self.whoWonPublishers.assign(to: \.self.winnerText, on: self)
+        cancellable = whoWonPublishers.assign(to: \.winnerText, on: self)
         reset()
     }
-    
+
     func fieldClicked(column: Int, row: Int) {
         if let field = fields[safe: column]?[safe: row],
             field == .empty {
@@ -44,28 +43,28 @@ class TicTacToeViewModel: ObservableObject {
             turn += 1
         }
     }
-    
+
     func reset() {
-        fields = Array.init(repeating: Array.init(repeating: .empty, count: 3), count: 3)
+        fields = Array(repeating: Array(repeating: .empty, count: 3), count: 3)
         winnerText = ""
         turn = 0
     }
-    
+
     var whoWonPublishers: AnyPublisher<String, Never> {
         $fields.compactMap {
             fields in
-            
+
             let flatfields = Array(fields.joined())
-            
-            for (a,b,c) in self.winStreaks {
-                if flatfields[a] == flatfields[b] && flatfields[a] == flatfields[c] {
-                    switch(flatfields[a]) {
-                        case .empty:
-                            break
-                        case .X:
-                            return "Spieler 1 hat gewonnen!"
-                        case .O:
-                            return "Spieler 2 hat gewonnen!"
+
+            for (a, b, c) in self.winStreaks {
+                if flatfields[a] == flatfields[b], flatfields[a] == flatfields[c] {
+                    switch flatfields[a] {
+                    case .empty:
+                        break
+                    case .X:
+                        return "Spieler 1 hat gewonnen!"
+                    case .O:
+                        return "Spieler 2 hat gewonnen!"
                     }
                 }
             }
@@ -82,7 +81,7 @@ enum FieldContent: String {
 }
 
 extension Array {
-    subscript (safe index: Int) -> Element? {
+    subscript(safe index: Int) -> Element? {
         return indices ~= index ? self[index] : nil
     }
 }

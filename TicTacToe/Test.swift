@@ -14,12 +14,12 @@ struct Test: View {
             VStack {
                 Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
                     .font(.title)
-                TextField(/*@START_MENU_TOKEN@*/"Placeholder"/*@END_MENU_TOKEN@*/, text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                TextField(/*@START_MENU_TOKEN@*/"Placeholder"/*@END_MENU_TOKEN@*/, text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/ .constant("")/*@END_MENU_TOKEN@*/)
             }
             Image(systemName: "circle")
                 .resizable()
                 .frame(width: 200.0, height: 200.0)
-                .foregroundColor(/*@START_MENU_TOKEN@*/.pink/*@END_MENU_TOKEN@*/)
+                .foregroundColor(/*@START_MENU_TOKEN@*/ .pink/*@END_MENU_TOKEN@*/)
         }
     }
 }
