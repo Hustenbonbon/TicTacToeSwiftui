@@ -5,6 +5,8 @@ Short demo project for my live coding session
 
 Livecoding-version in branch livecoding
 
-Good reads:
+## Good reads
+
 Combine: https://heckj.github.io/swiftui-notes/#patterns-sink-subscriber
+
 SwiftUI: https://fuckingswiftui.com/ https://www.hackingwithswift.com/quick-start/swiftui/
