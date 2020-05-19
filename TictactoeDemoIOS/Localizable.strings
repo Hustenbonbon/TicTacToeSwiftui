@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  TicTacToeDemo
+
+  Created by Max Tharr on 19.05.20.
+  Copyright © 2020 Mayflower GmbH. All rights reserved.
+*/
+
+"wintext" = "Spieler 🚀 hat gewonnen";
+"resetText" = "Nochmal spielen";
