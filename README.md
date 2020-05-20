@@ -9,4 +9,10 @@ Livecoding-version in branch livecoding
 
 Combine: https://heckj.github.io/swiftui-notes/#patterns-sink-subscriber
 
-SwiftUI: https://fuckingswiftui.com/ https://www.hackingwithswift.com/quick-start/swiftui/
+SwiftUI:
+
+https://fuckingswiftui.com/
+
+https://www.hackingwithswift.com/quick-start/swiftui/
+
+https://cs193p.sites.stanford.edu/
